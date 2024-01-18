@@ -11,12 +11,18 @@ export default function Signup() {
   const [pass,setPass]=useState('')
 
 
+  const handlesubmit= (e)=>{
+    e.preventDefault()
+    console.log(username,phone,email,pass,'datasss')
+  }
+
+
 
   return (
     <div>
       <div className="signupParentDiv">
         <img width="200px" height="200px" src={Logo}></img>
-        <form>
+        <form onSubmit={handlesubmit}>
 
           <label htmlFor="fname">Username</label>
           <br />
