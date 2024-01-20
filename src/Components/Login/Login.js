@@ -3,7 +3,19 @@ import React from 'react';
 import Logo from '../../olx-logo.png';
 import './Login.css';
 
+
+import { useState } from 'react';
+
 function Login() {
+
+const [email,setEmail]=useState('')
+const [pass,setPass]=useState('')
+
+const handlelogin= (e)=>{
+  e.preventDefault()
+  firebase.auth
+}
+
   return (
     <div>
       <div className="loginParentDiv">
