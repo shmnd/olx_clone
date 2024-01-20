@@ -1,11 +1,13 @@
-import React from 'react';
-import './App.css';
-import { BrowserRouter as Router ,Route } from 'react-router-dom/cjs/react-router-dom.min';
-import Signup from './Pages/Signup'
+// TO RUN OPEN TERMINAL CHOOSE GITBASH AND TYPE YARN START IN SMALL LETTER
 
 /**
  * ?  =====Import Components=====
  */
+
+import React from 'react';
+import './App.css';
+import { BrowserRouter as Router ,Route } from 'react-router-dom/cjs/react-router-dom.min';
+import Signup from './Pages/Signup';
 import Home from './Pages/Home';
 
 function App() {
