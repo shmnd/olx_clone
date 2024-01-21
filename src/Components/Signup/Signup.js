@@ -37,8 +37,6 @@ export default function Signup() {
     // console.log(username,phone,email,pass,'datasss')
   }
 
-
-
   return (
     <div>
       <div className="signupParentDiv">
