@@ -3,24 +3,45 @@ import React from 'react';
 import Logo from '../../olx-logo.png';
 import './Login.css';
 
-
-import { useState } from 'react';
+import { FirebaseContext } from '../../store/Firebasecontext';
+import { useState,useContext } from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function Login() {
 
 const [email,setEmail]=useState('')
 const [pass,setPass]=useState('')
+const {firebase} =useContext(FirebaseContext)
+const history =useHistory()
 
 const handlelogin= (e)=>{
   e.preventDefault()
-  firebase.auth
-}
+  firebase.auth().signInWithEmailAndPassword(email, pass).then(()=>{
+    alert('Logged sucessfully')
+  }).catch((error) => {
+    let errorMessage = '';
+
+    switch (error.code) {
+      case 'auth/invalid-email':
+        errorMessage = 'Invalid email address. Please check your email and try again.';
+        break;
+      case 'auth/wrong-password':
+        errorMessage = 'Invalid password. Please check your password and try again.';
+        break;
+      default:
+        errorMessage = 'Something went wrong. Please try again.';
+    }
+
+    // Display the error message to the user
+    alert(errorMessage);
+  });
+};
 
   return (
     <div>
       <div className="loginParentDiv">
         <img width="200px" height="200px" src={Logo}></img>
-        <form>
+        <form onSubmit={handlelogin}>
           <label htmlFor="fname">Email</label>
           <br />
           <input

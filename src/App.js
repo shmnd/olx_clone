@@ -30,6 +30,10 @@ function App() {
           <Login/>
         </Route>
 
+        <Route path='/home'>
+          <Home/>
+        </Route>
+
       </Router>
     </div>
   );
