@@ -53,7 +53,7 @@ export default function Signup() {
             id="fname"
             name="name"
             defaultValue=""
-          />
+          /> ////
           <br />
 
           <label htmlFor="fname">Email</label>
