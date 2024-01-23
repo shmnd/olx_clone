@@ -3,7 +3,7 @@ import './Signup.css';
 
 
 import React, { useState,useContext } from 'react';
-import { FirebaseContext } from '../../store/Firebasecontext';
+import { FirebaseContext } from '../../store/Context';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 
