@@ -10,14 +10,23 @@ const Create = () => {
   const [category,setCategory]=useState('')
   const [price,setPrice]= useState('')
   const [image,setImage]=useState(null)
+  const date = new Date();
   const handleSubmit=()=>{
     firebase.storage().ref(`/image/${image.name}`).put(image).then(({ref})=>{
       ref.getDownloadURL().then((url)=>{
         console.log(url,'image pah')
+        firebase.firestore().collection('olx products').add({
+          name,   //we can write like this if the object name and key is same 
+          category,
+          price,
+          url,
+          userId:user.uid,
+          createdAt:date.toString()
+        })
       })
     })
-    
   }
+
   return (
     <Fragment>
       <Header />
