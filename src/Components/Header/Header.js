@@ -12,6 +12,7 @@ function Header() {
   const history = useHistory()
   const {user}= useContext(Authcontext)
   const {firebase} = useContext(FirebaseContext)
+
   return (
     
     <div className="headerParentDiv">
@@ -53,9 +54,9 @@ function Header() {
           <SellButton></SellButton>
           <div className="sellMenuContent">
             <SellButtonPlus></SellButtonPlus>
-            {user && <span onClick={() => history.push('/create')}>
+            {user ? <span onClick={() => history.push('/create')}>
             SELL
-            </span>}
+            </span>:history.push('/login')}
           </div>
         </div>
       </div>
