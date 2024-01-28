@@ -10,7 +10,7 @@ function Posts() {
   const [products,setProducts]=useState([])
 
   useEffect(()=>{
-    firebase.firestore().collection('products').get().then((snapshot)=>{
+    firebase.firestore().collection('olx products').get().then((snapshot)=>{
       const allPost = snapshot.docs.map((product)=>{
         return{
           ...product.data(),
@@ -37,15 +37,15 @@ function Posts() {
             <Heart></Heart>
           </div>
           <div className="image">
-            <img src="../../../Images/R15V3.jpg" alt="" />
+            <img src={product.url} alt="" />
           </div>
           <div className="content">
-            <p className="rate">&#x20B9; 250000</p>
-            <span className="kilometer">Two Wheeler</span>
-            <p className="name"> YAMAHA R15V3</p>
+            <p className="rate">&#x20B9; {product.price}</p>
+            <span className="kilometer">{product.category}</span>
+            <p className="name"> {product.name}</p>
           </div>
           <div className="date">
-            <span>Tue May 04 2021</span>
+            <span>{product.createAt}</span>
           </div>
         </div>
         })
