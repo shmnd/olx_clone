@@ -4,13 +4,17 @@ import Heart from '../../assets/Heart';
 import './Post.css';
 
 import { FirebaseContext } from '../../store/Context';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { PostContext } from '../../store/PostContext';
 
 function Posts() {
   const {firebase}=useContext(FirebaseContext);
   const [products,setProducts]=useState([])
+  const history=useHistory()
+  const {setPOstDetails} = useContext(PostContext)
 
   useEffect(()=>{
-    firebase.firestore().collection('olx products').get().then((snapshot)=>{
+    firebase.firestore().collection('olx products').get().then((snapshot)=>{    //inside the collect provide name of database from firebase
       const allPost = snapshot.docs.map((product)=>{
         return{
           ...product.data(),
@@ -32,7 +36,10 @@ function Posts() {
         <div className="cards">
 
         { products.map(product=>{
-          return <div className="card">
+          return <div className="card" onClick={()=>{
+            setPOstDetails(product)
+            history.push('/view')
+          }}>
           <div className="favorite">
             <Heart></Heart>
           </div>
@@ -55,7 +62,7 @@ function Posts() {
       </div>
       <div className="recommendations">
         <div className="heading">
-          <span>Fresh recommendations</span>
+          <span>New recommendations</span>
         </div>
         <div className="cards">
           <div className="card">
