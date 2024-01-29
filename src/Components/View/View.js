@@ -14,7 +14,7 @@ function View() {
 
   useEffect(()=>{
     const {userId}= postDetails
-    firebase.firestore().collection('olx users').where('id','==',userId).get().then((res)=>{
+    firebase.firestore().collection('olx_users').where('id','==',userId).get().then((res)=>{
       res.forEach( doc => {
         setUserDetails(doc.data())
       });

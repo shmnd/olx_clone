@@ -11,7 +11,7 @@ function Posts() {
   const {firebase}=useContext(FirebaseContext);
   const [products,setProducts]=useState([])
   const history=useHistory()
-  const {setPOstDetails} = useContext(PostContext)
+  const {setPostDetails} = useContext(PostContext)
 
   useEffect(()=>{
     firebase.firestore().collection('olx products').get().then((snapshot)=>{    //inside the collect provide name of database from firebase
@@ -37,7 +37,7 @@ function Posts() {
 
         { products.map(product=>{
           return <div className="card" onClick={()=>{
-            setPOstDetails(product)
+            setPostDetails(product)
             history.push('/view')
           }}>
           <div className="favorite">
