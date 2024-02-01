@@ -14,7 +14,7 @@ const {firebase} =useContext(FirebaseContext)
 const history =useHistory()
 
 const handlelogin= (e)=>{
-  e.preventDefault()
+  e.preventDefault() 
 
   firebase.auth().signInWithEmailAndPassword(email, pass).then(()=>{
     
