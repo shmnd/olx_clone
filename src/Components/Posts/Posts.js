@@ -7,11 +7,15 @@ import { FirebaseContext } from '../../store/Context';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { PostContext } from '../../store/PostContext';
 
+
 function Posts() {
   const {firebase}=useContext(FirebaseContext);
   const [products,setProducts]=useState([])
   const history=useHistory()
   const {setPostDetails} = useContext(PostContext)
+
+
+
 
   useEffect(()=>{
     firebase.firestore().collection('olx products').get().then((snapshot)=>{    //inside the collect provide name of database from firebase
@@ -24,6 +28,9 @@ function Posts() {
       setProducts(allPost)
     })
   },[])
+
+
+ 
 
 
   return (
