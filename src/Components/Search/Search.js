@@ -1,14 +1,14 @@
 import React,{useState,useEffect,useContext} from 'react';
 
 import Heart from '../../assets/Heart';
-import './Post.css';
+import './Search.css';
 
 import { FirebaseContext } from '../../store/Context';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { PostContext } from '../../store/PostContext';
 
 
-function Posts() {
+function SearchPosts() {
   const {firebase}=useContext(FirebaseContext);
   const [products,setProducts]=useState([])
   const history=useHistory()
@@ -72,4 +72,4 @@ function Posts() {
   );
 }
 
-export default Posts;
+export default SearchPosts;

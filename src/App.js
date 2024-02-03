@@ -4,6 +4,8 @@ import Home from './Pages/Home';
 import Login from './Pages/Login';
 import Create from './Pages/Create';
 import ViewPost from './Pages/ViewPost'; 
+import SearchPost from './Pages/SearchPost'
+
 
 
 /**
@@ -16,10 +18,6 @@ import './App.css';
 import { BrowserRouter as Router ,Route } from 'react-router-dom/cjs/react-router-dom.min';
 import { Authcontext, FirebaseContext } from './store/Context';
 import Post from './store/PostContext';
-import Search from './assets/Search';
-
-
-
 
 function App() {
     const {user,setUser}= useContext(Authcontext)
@@ -47,20 +45,28 @@ function App() {
               <Route path='/login'>
                 <Login/>
               </Route>
-              {/* <Search> */}
-                <Route path='/home'>
-                  <Home/>
-                </Route>
-              {/* </Search>  */}
+
               <Route path='/create'>
                 <Create/>
               </Route>
               
+              <Route path='/home'>
+                <Home/>
+              </Route>
+
               <Route path='/view'>
                 <ViewPost/>
               </Route>
-            
+
+              <Route path='/search'>
+                <SearchPost/>
+              </Route>
+
+              
+              
+              
           </Router>
+          
         </Post>
       
     </div>
