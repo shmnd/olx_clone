@@ -1,4 +1,4 @@
-import React,{useContext} from 'react';
+import React,{useContext, useRef, useState} from 'react';
 
 import './Header.css';
 import OlxLogo from '../../assets/OlxLogo';
@@ -9,20 +9,29 @@ import SellButtonPlus from '../../assets/SellButtonPlus';
 
 import { Authcontext, FirebaseContext } from '../../store/Context';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-// import { SearchContext } from '../../store/SearchContext';
-// import { PostContext } from '../../store/PostContext';
+import {SearchContext} from '../../store/SearchContext'
+
 
 
 function Header() {
+  // const searchQuery = useRef();
+
+  // const [searchQuery,setSearchQuery]=useState('')
+
   const history = useHistory()
   const {user}= useContext(Authcontext)
   const {firebase} = useContext(FirebaseContext)
+
+
+  const {setSearchRes} = useContext(SearchContext) 
   
   return (
     <div className="headerParentDiv">
       <div className="headerChildDiv">
-        <div className="brandName">
-          <OlxLogo></OlxLogo>
+        <div className="brandName" onClick={()=>{
+          history.push('/')
+        }}>
+          <OlxLogo ></OlxLogo>
         </div>
         <div className="placeSearch">
           <Search>
@@ -32,22 +41,25 @@ function Header() {
         </div>
 
         <div className="productSearch">
+          
           <div className="input">
             <input
-              
               type="text"
-              // value={searchCategory}
-              // onChange={(e)=>setSearchCategory(e.target.value)}
+              // value={searchQuery}
               placeholder="Find car,mobile phone and more..."
               />
           </div>
 
-          <div className="searchAction" >
+          <div className="searchAction" onClick={(searchQuery) => {
+            setSearchRes(searchQuery);
+            history.push('/search');
+
+            // Log after navigation:
+            console.log('Search context value (after navigation):', setSearchRes());
+          }}>
+            
             <Search color="#hhhhhh" ></Search>
           </div>
-
-          
-
 
         </div>
 

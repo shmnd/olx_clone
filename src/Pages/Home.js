@@ -6,13 +6,16 @@ import Banner from '../Components/Banner/Banner';
 import Posts from '../Components/Posts/Posts';
 import Footer from '../Components/Footer/Footer';
 
+import Search from '../Components/Search/Search';
+
 function Home(props) {
   return (
     <div className="homeParentDiv">
-      <Header />
-      <Banner />
-      <Posts />
-      <Footer />
+        <Header />
+        <Banner />
+        {/* <Search/> */}
+        <Posts />
+        <Footer />
     </div>
   );
 }

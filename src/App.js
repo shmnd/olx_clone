@@ -61,9 +61,6 @@ function App() {
               <Route path='/search'>
                 <SearchPost/>
               </Route>
-
-              
-              
               
           </Router>
           
